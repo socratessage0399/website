@@ -1,0 +1,35 @@
+{% extends 'templates/default.twig' %}
+
+{% block page_title %}Войдите в свой аккаунт{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <form action="{{ path_for('auth.signin') }}" method="POST" autocomplete="off">
+                    <div class="form-group">
+                        <label for="email" class="control-label">Электронная почта</label>
+                        <input type="text" name="email" id="email" class="form-control {% if errors.email is not empty %}is-invalid{% endif %}" placeholder="Введите пожалуйста электронную почту" value="{{ old.email }}">
+                        {% if errors.email is not empty %}
+                            <p class="text-danger" style="margin-top: 8px;">{{ errors.email|first|raw }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">Пароль</label>
+                        <input type="password" name="password" id="password" class="form-control {% if errors.password is not empty %}is-invalid{% endif %}" placeholder="Введите пожалуйста пароль"">
+                        {% if errors.password is not empty %}
+                            <p class="text-danger" style="margin-top: 8px;">{{ errors.password|first|raw }}</p>
+                        {% endif %}
+                    </div>
+                    {% if errors.auth is not empty %}
+                        <p class="text-danger" style="margin-top: 8px;">{{ errors.auth|raw }}</p>
+                    {% endif %}
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </div>
+                    {{ csrf.field | raw }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'templates/default.twig' %}
+
+{% block page_title %}Создать учетную запись{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <form action="{{ path_for('auth.signup') }}" method="POST" autocomplete="off">
+                    <div class="form-group">
+                        <label for="username" class="control-label">Имя пользователя</label>
+                        <input type="text" name="username" id="username" class="form-control {% if errors.username is not empty %}is-invalid{% endif %}" placeholder="Введите пожалуйста имя пользователя" value="{{ old.username }}">
+                        {% if errors.username is not empty %}
+                            <p class="text-danger" style="margin-top: 8px;">{{ errors.username|first|raw }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label">Электронная почта</label>
+                        <input type="text" name="email" id="email" class="form-control {% if errors.email is not empty %}is-invalid{% endif %}" placeholder="Введите пожалуйста электронную почту" value="{{ old.email }}">
+                        {% if errors.email is not empty %}
+                            <p class="text-danger" style="margin-top: 8px;">{{ errors.email|first|raw }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">Пароль</label>
+                        <input type="password" name="password" id="password" class="form-control {% if errors.password is not empty %}is-invalid{% endif %}" placeholder="Введите пожалуйста пароль"">
+                        {% if errors.password is not empty %}
+                            <p class="text-danger" style="margin-top: 8px;">{{ errors.password|first|raw }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="repeat_password" class="control-label">Повторите пароль</label>
+                        <input type="password" name="repeat_password" id="repeat_password" class="form-control {% if errors.repeat_password is not empty %}is-invalid{% endif %}" placeholder="Пожалуйста повторите пароль"">
+                        {% if errors.repeat_password is not empty %}
+                            <p class="text-danger" style="margin-top: 8px;">{{ errors.repeat_password|first|raw }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Создать учетную запись</button>
+                    </div>
+                    {{ csrf.field | raw }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

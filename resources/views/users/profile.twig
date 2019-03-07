@@ -1,0 +1,18 @@
+{% extends 'templates/default.twig' %}
+
+{% block page_title %}{{ '@' ~ user.username }}{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <img src="{{ base_url() }}/public/images/users/{{ user.image }}" style="border-radius: 4px !important;" class="rounded img-fluid shadow mb-4" alt="{{ '@' ~ user.username }}">
+            <h3 class="text-primary mb-0" style="font-size: 18px !important;">{{ '@' ~ user.username }}</h3>
+            <span class="text-muted">{{ user.role.name }}</span>
+        </div>
+        <div class="col-9">
+
+        </div>
+    </div>
+</div>
+{% endblock %}

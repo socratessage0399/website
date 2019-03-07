@@ -1,0 +1,27 @@
+<div class="container">
+    <ul class="nav nav-pills" style="margin-top: 14px;">
+        <li class="nav-item">
+            <a class="nav-link {% if uri == '/' %}active{% endif %}" href="{{ path_for('home') }}">Главная страница</a>
+        </li>
+        {% if auth.check %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ auth.user.fullname() }}</a>
+            <div class="dropdown-menu">
+                <a href="{{ path_for('user.profile', {username: auth.user.username}) }}" class="dropdown-item">Моя страница</a>
+                <a class="dropdown-item" href="{{ path_for('user.settings') }}">Настройки</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ path_for('auth.logout') }}">Выйти</a>
+            </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link {% if uri == '/auth/signin' %}active{% endif %}" href="{{ path_for('auth.signin') }}">Войти</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if uri == '/auth/signup' %}active{% endif %}" href="{{ path_for('auth.signup') }}">Создать учетную запись</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+<hr>
+<br>

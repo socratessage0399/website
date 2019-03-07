@@ -1,0 +1,31 @@
+body {
+    font-family: 'Calibri', sans-serif !important;
+    font-size: 13px !important;
+}
+
+* {
+    font-family: 'Calibri', sans-serif !important;
+    font-size: 13px !important;
+    line-height: normal !important;
+}
+
+input {
+    font-size: 13px !important;
+}
+
+.btn {
+    border-radius: 2px !important;
+}
+
+.nav-pills .nav-link {
+    border-radius: 2px !important;
+    margin-right: 12px;
+}
+
+.nav-pills .nav-link a:last-child {
+	margin-right: 0;
+}
+
+.dropdown-menu {
+    border-radius: 0 !important;
+}
